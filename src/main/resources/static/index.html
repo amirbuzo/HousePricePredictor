@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Main Page</title>
+</head>
+
+<body ng-app="demo">
+    <hr/>
+    <div class="container" ng-controller="PredictController">
+     
+     <div class="row">
+      Apartment price predictor is an application which predict the prices of apartments in Tirana based on Machine Learning Algorithms
+      like RandomForest and RandomTree.
+     </div>
+
+        <div class="row">
+            <div class="col">
+                <label>Metra</label>
+            </div>
+
+            <div class="col">
+                <input type="number" ng-model="houseDto.sizeMeters" class="input-sm spacing" />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Mobiluar</label>
+            </div>
+            <div class="col">
+                <select ng-model="houseDto.furnished" class="input-sm spacing">
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                 </select>
+            </div>
+
+ 
+
+
+        </div>
+         <div class="row">
+            <div class="col">
+                <label>Nr. Dhomave</label>
+            </div>
+            <div class="col">
+                <select ng-model="houseDto.modelType" class="input-sm spacing">
+                    <option value="TWO_PLUS_ONE">2+1</option>
+                    <option value="ONE_PLUS_ONE">1+1</option>
+                 </select>
+            </div>
+
+ 
+
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Tipi i Shitesit</label>
+            </div>
+            <div class="col">
+                <select ng-model="houseDto.ownerType" class="input-sm spacing">
+                    <option value="INDIVIDUAL">INDIVIDUAL</option>
+                    <option value="ESTATE">ESTATE</option>
+                 </select>
+            </div>
+
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Me Ashensor</label>
+            </div>
+
+            <div class="col">
+                <select ng-model="houseDto.hasLift" class="input-sm spacing">
+                    <option value="YES">YES</option>
+                    <option value="NO">NO</option>
+                </select>
+            </div>
+
+        </div>
+ 
+        <div class="row">
+            <div class="col">
+                <label>Legalizuar</label>
+            </div>
+
+            <div class="col">
+                <select ng-model="houseDto.legalized" class="input-sm spacing">
+                    <option value="ME_HIPOTEKE">ME_HIPOTEKE</option>
+                    <option value="PA_HIPOTEKE">PA_HIPOTEKE</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Tirana Zona</label>
+            </div>
+
+            <div class="col">
+                <select ng-model="houseDto.city" class="input-sm spacing">
+                      <option value="21Dhjetori">21Dhjetori</option>
+                     <option value="Medreseja">Medreseja</option>
+                     <option value="Liqeni">Liqeni</option>
+                     <option value="Astir">Astir</option>
+                     <option value="Selite">Selite, Kodra e diellit</option>
+                     <option value="RrDibres">RrDibres</option>
+                      <option value="DonBosko">DonBosko</option>
+                     <option value="Yzberisht">Yzberisht</option>
+                     <option value="Qender">Qender</option>
+                    <option value="Fresku">Fresku</option>
+                    <option value="RrDurresit">RrDurresit</option>
+                    <option value="MistoMame">MistoMame</option>
+                    <option value="Brryli">Brryli</option>
+                    <option value="ZoguZi">ZoguZi</option>
+                    <option value="AliDemi">AliDemi</option>
+                    <option value="Kombinat">Kombinat</option>
+                    <option value="RrElbasanit">RrElbasanit</option>
+                    <option value="Xhamlliku">Xhamlliku</option>
+                    <option value="Porcelani">Porcelani</option>
+                    <option value="KomuneParisit">KomuneParisit</option>
+                    <option value="MistoMame">MistoMame</option>
+                    <option value="Laprake">Laprake</option>
+                    <option value="Shkoze">Shkoze</option>
+                    <option value="QytetStudenti">QytetStudenti</option>
+                    <option value="InxhinieriNdertimit">InxhinieriNdertimit</option>
+                    <option value="Allias">Allias</option>
+                    <option value="RrBardhyl_SiriKodra_RizaCerova">RrBardhyl SiriKodra RizaCerova</option>
+                    <option value="Kamez">Kamez</option>
+                    <option value="VasilShanto">Vasil Shanto</option>
+                    
+                 </select>
+            </div>
+        </div>
+          <div class="row">
+            <div class="col">
+                <label>Hipoteke</label>
+            </div>
+
+            <div class="col">
+                <select ng-model="houseDto.algorithm" class="input-sm spacing">
+                    <option value="RANDOM_FOREST">RANDOM_FOREST</option>
+                    <option value="RANDOM_TREE">RANDOM_TREE</option>
+                    <option value="REP_TREE">REP_TREE</option>
+                    <option value="ZEROR">ZEROR</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Viti i ndertimit</label>
+            </div>
+
+            <div class="col">
+                <input type="number" ng-model="houseDto.buildingYear" class="input-sm spacing" value="2010" />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col"></div>
+            <div class="col">
+                <button ng-click="savePredict()" class="btn btn-sm btn-info">Predict Price</button>
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col">
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <label>Cmimi i parashikuar</label>
+            </div>
+
+            <div class="col">
+                <input type="text" ng-model="houseDto.price" class="input-sm spacing" readonly/>
+            </div>
+
+        </div>
+         <div class="row">
+            <div class="col">
+                <label>Cmimi per meter katror</label>
+            </div>
+
+            <div class="col">
+               {{ houseDto.price/houseDto.sizeMeters}}
+            </div>
+
+        </div>
+        
+
+        <hr/>
+     
+    </div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
+<script src="js/app/app.js"></script>
+<script src="js/app/PredictController.js"></script>
+<script src="js/app/PredictService.js"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/app/app.css" />
+
+</html>
