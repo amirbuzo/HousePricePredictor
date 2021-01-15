@@ -14,6 +14,8 @@ import weka.classifiers.bayes.NaiveBayes;
 import weka.classifiers.bayes.NaiveBayesUpdateable;
 import weka.classifiers.functions.LinearRegression;
 import weka.classifiers.functions.Logistic;
+import weka.classifiers.lazy.IBk;
+import weka.classifiers.lazy.KStar;
 import weka.classifiers.meta.AdaBoostM1;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.classifiers.meta.RegressionByDiscretization;
@@ -52,8 +54,8 @@ public class PredictorMainClass {
 		house.setHasLift(Lift.YES);
 		house.setBuildingYear(new Date(2010,01,01));
 		house.setOwnerType(OwnerType.INDIVIDUAL);
-		house.setLegalized(Legalized.PA_HIPOTEKE);
-		house.setCity("RrElbasanit");
+		house.setLegalized(Legalized.ME_HIPOTEKE);
+		house.setCity("Fresku");
  		house.setModelType(ApartmentType.TWO_PLUS_ONE);
  		house.setFurnished(Lift.YES);
  		System.out.println("housedto" + house);
@@ -115,13 +117,16 @@ public class PredictorMainClass {
 	{
 		PredictorMainClass inputInstance = new PredictorMainClass();
 		Instances instances = inputInstance.getInstances(TRAINING_DATA_SET_FILENAME_NUM);
-		AbstractClassifier applyclassifier = inputInstance.applyclassifier(new ZeroR(), instances,
+		AbstractClassifier applyclassifier = inputInstance.applyclassifier(new RandomForest(), instances,
 				null// weka.core.Utils.splitOptions("-K 0 -M 1.0 -V 0.001 -S 1")
 				 );
 		
 		Instance houseInstance = inputInstance.createhouseInstance(instances, house);
  		double result = applyclassifier.classifyInstance(houseInstance);
 		System.out.println("zeroR=" + result);
+ 		  result = applyclassifier.classifyInstance(houseInstance);
+ 			System.out.println("zeroR=" + result);
+
 		return result; 
 	}
 	

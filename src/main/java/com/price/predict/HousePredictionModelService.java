@@ -18,6 +18,7 @@ import com.price.predict.domainvalue.Lift;
 import com.price.predict.domainvalue.OwnerType;
 
 import weka.classifiers.AbstractClassifier;
+import weka.classifiers.lazy.IBk;
 import weka.classifiers.rules.ZeroR;
 import weka.classifiers.trees.REPTree;
 import weka.classifiers.trees.RandomForest;
@@ -63,41 +64,41 @@ public class HousePredictionModelService {
 			createPredictionModel();
 		} else if (e.equals(ALGORIRTHM.RANDOM_FOREST)) {
 			createPredictionModelRondomForest();
-		} else if (e.equals(ALGORIRTHM.ZEROR)) {
-			createPredictionModelZeroR();
+		} else if (e.equals(ALGORIRTHM.IBK)) {
+			createPredictionModelIBk();
 		} else if (e.equals(ALGORIRTHM.REP_TREE)) {
 			createPredictionModelRepTree();
 		}
 	}
 
-	public void createPredictionModel() throws Exception {
+	public static synchronized  void createPredictionModel() throws Exception {
 
 		if(randomTree ==null)
 		randomTree = applyclassifier(new RandomTree(), instances,
 				weka.core.Utils.splitOptions("-K 0 -M 1.0 -V 0.001 -S 1"));
 	}
 
-	public void createPredictionModelRondomForest() throws Exception {
+	public static synchronized void createPredictionModelRondomForest() throws Exception {
 
 		if(randomForest ==null)
-		randomForest = applyclassifier(new RandomForest(), instances,null
+			randomForest = applyclassifier(new RandomForest(), instances,null
 				//weka.core.Utils.splitOptions("-K 0 -M 1.0 -V 0.001 -S 1")
 				);
 	}
 
-	public void createPredictionModelRepTree() throws Exception {
+	public static synchronized  void createPredictionModelRepTree() throws Exception {
 
 		if(repTree ==null)
 		repTree = applyclassifier(new REPTree(), instances, null);
 	}
 
-	public void createPredictionModelZeroR() throws Exception {
+	public static synchronized  void createPredictionModelIBk() throws Exception {
 
 		if(zeroR ==null)
-		zeroR = applyclassifier(new ZeroR(), instances, null);
+			zeroR = applyclassifier(new IBk(), instances, null);
 	}
 
-	public AbstractClassifier applyclassifier(AbstractClassifier abstractClassifier, Instances trainingData,
+	public static synchronized  AbstractClassifier applyclassifier(AbstractClassifier abstractClassifier, Instances trainingData,
 			String[] options) throws Exception {
 
 		abstractClassifier.buildClassifier(trainingData);

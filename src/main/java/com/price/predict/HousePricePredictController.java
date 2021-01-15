@@ -41,7 +41,7 @@ public class HousePricePredictController {
 		} else if (e.equals(ALGORIRTHM.RANDOM_FOREST)) {
 			result = HousePredictionModelService.randomForest.classifyInstance(createCarInstance);
 
-		} else if (e.equals(ALGORIRTHM.ZEROR)) {
+		} else if (e.equals(ALGORIRTHM.IBK)) {
 			result = HousePredictionModelService.zeroR.classifyInstance(createCarInstance);
 
 		} else if (e.equals(ALGORIRTHM.REP_TREE)) {
