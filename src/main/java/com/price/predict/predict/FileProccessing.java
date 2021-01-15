@@ -19,7 +19,7 @@ public class FileProccessing {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		String files = "C:\\Users\\abuzo\\git\\CarPricePredictorML\\src\\main\\resources\\static\\data.txt";
+		String files = "C:\\Users\\abuzo\\git\\HousePricePredictor\\src\\main\\resources\\static\\data.txt";
 		File file = new File(files);
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
