@@ -4,6 +4,4 @@ var demoApp = angular.module('demo', ['ui.bootstrap', 'demo.controllers',
 ]);
 demoApp.constant("CONSTANTS", {
     getPredictByIdUrl: "/Predict/getPredict/",
-    getAllPredicts: "/Predict/getAllPredicts",
-    savePredict: "/Predict/savePredict"
 });

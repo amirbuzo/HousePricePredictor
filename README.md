@@ -22,7 +22,7 @@ $ mvn clean test
 ## Demo
 
 #### UI
-`HousePricePredictor` is hosted on a [heroku server](https://housepricepredictor.herokuapp.com/) with a sample learning model file.
+`HousePricePredictor` is hosted on a [heroku server](https://price-predictor-tirana-app.herokuapp.com/) with a sample learning model file.
 
 #### API
 To use the API of `HousePricePredictor`, the following URL, Header and JSON body can be used:
