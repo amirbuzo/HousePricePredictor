@@ -61,7 +61,6 @@ public class HousePredictionModelService {
 
 		if (e.equals(ALGORIRTHM.RANDOM_TREE)) {
 			createPredictionModel();
-
 		} else if (e.equals(ALGORIRTHM.RANDOM_FOREST)) {
 			createPredictionModelRondomForest();
 		} else if (e.equals(ALGORIRTHM.ZEROR)) {
@@ -81,8 +80,9 @@ public class HousePredictionModelService {
 	public void createPredictionModelRondomForest() throws Exception {
 
 		if(randomForest ==null)
-		randomForest = applyclassifier(new RandomForest(), instances,
-				weka.core.Utils.splitOptions("-K 0 -M 1.0 -V 0.001 -S 1"));
+		randomForest = applyclassifier(new RandomForest(), instances,null
+				//weka.core.Utils.splitOptions("-K 0 -M 1.0 -V 0.001 -S 1")
+				);
 	}
 
 	public void createPredictionModelRepTree() throws Exception {

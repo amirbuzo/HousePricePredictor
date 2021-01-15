@@ -30,11 +30,9 @@ public class HousePricePredictController {
 	@ResponseStatus(HttpStatus.CREATED)
 	public HouseDto createCar(@Valid @RequestBody HouseDto houseDto) throws Exception {
 
-		System.out.println(houseDto);
-		predictionModelService = new HousePredictionModelService(houseDto.getAlgorithm());
+ 		predictionModelService = new HousePredictionModelService(houseDto.getAlgorithm());
 		Instance createCarInstance = predictionModelService.createHouseInstance(houseDto);
-		System.out.println(createCarInstance);
-
+ 
 		ALGORIRTHM e = houseDto.getAlgorithm();
 		double result = 0.0;
 
