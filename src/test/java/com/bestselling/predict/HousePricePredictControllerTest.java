@@ -36,7 +36,7 @@ public class HousePricePredictControllerTest {
     public void shouldReturnStatusCreatedWhenPostCarData() throws Exception {
         HouseDto requestBody = buildCardDTO();
 
-        mvc.perform(MockMvcRequestBuilders.post("/v1/cars")
+        mvc.perform(MockMvcRequestBuilders.post("/v1/house")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(requestBody)))
                 .andExpect(status().isCreated());

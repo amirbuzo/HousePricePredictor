@@ -28,7 +28,7 @@ public class HousePricePredictController {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public HouseDto createCar(@Valid @RequestBody HouseDto houseDto) throws Exception {
+	public HouseDto createHouse(@Valid @RequestBody HouseDto houseDto) throws Exception {
 
  		predictionModelService = new HousePredictionModelService(houseDto.getAlgorithm());
 		Instance createCarInstance = predictionModelService.createHouseInstance(houseDto);
