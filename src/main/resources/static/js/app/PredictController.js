@@ -17,7 +17,7 @@ module.controller("PredictController", ["$scope", "PredictService",
             buildingYear: 2010,
             city:"Fresku",
             modelType:"TWO_PLUS_ONE",
-            algorithm:"RANDOM_FOREST"
+            algorithm:"RANDOM_TREE"
         };
         $scope.skills = [];
         PredictService.getPredictById(1).then(function(value) {
