@@ -43,32 +43,32 @@ import weka.filters.supervised.attribute.NominalToBinary;
 public class PredictorMainClass {
 
 	public static final String TRAINING_DATA_SET_FILENAME_NUM = "C:\\Users\\abuzo\\house_data_1.arff";
-   // public static final String TRAINING_DATA_SET_FILENAME_NOMINAL = "C:\\Users\\abuzo\\house_data_1nominal.arff";
+    public static final String TRAINING_DATA_SET_FILENAME_NOMINAL = "C:\\Users\\abuzo\\house_data_1nominal.arff";
 	
-	public static void main(String[] args) throws Exception {
-
-		
-
-		HouseDto house = new HouseDto();
-		house.setSizeMeters(100);
-		house.setHasLift(Lift.YES);
-		house.setBuildingYear(new Date(2010,01,01));
-		house.setOwnerType(OwnerType.INDIVIDUAL);
-		house.setLegalized(Legalized.ME_HIPOTEKE);
-		house.setCity("Fresku");
- 		house.setModelType(ApartmentType.TWO_PLUS_ONE);
- 		house.setFurnished(Lift.YES);
- 		System.out.println("housedto" + house);
- 
- 	 
-// 		System.out.println(randomForestPediction(house));
-// 		System.out.println(randomTreePediction(house));
-// 		System.out.println(repTreePediction(house));
- 		System.out.println(zeroRPediction(house));
- //		System.out.println(decisionStumpSPediction(house));
- 	 
- 
-	}
+//	public static void main(String[] args) throws Exception {
+//
+//		
+//
+//		HouseDto house = new HouseDto();
+//		house.setSizeMeters(100);
+//		house.setHasLift(Lift.YES);
+//		house.setBuildingYear(new Date(2010,01,01));
+//		house.setOwnerType(OwnerType.INDIVIDUAL);
+//		house.setLegalized(Legalized.ME_HIPOTEKE);
+//		house.setCity("Fresku");
+// 		house.setModelType(ApartmentType.TWO_PLUS_ONE);
+// 		house.setFurnished(Lift.YES);
+// 		System.out.println("housedto" + house);
+// 
+// 	 
+//// 		System.out.println(randomForestPediction(house));
+//// 		System.out.println(randomTreePediction(house));
+//// 		System.out.println(repTreePediction(house));
+// 		System.out.println(zeroRPediction(house));
+// //		System.out.println(decisionStumpSPediction(house));
+// 	 
+// 
+//	}
 	
 	public static Double randomTreePediction(HouseDto house) throws Exception
 	{
