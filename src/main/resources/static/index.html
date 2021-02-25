@@ -4,6 +4,13 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Apartment Price Predictor</title>
+<style>
+footer {
+  text-align: center;
+  padding: 3px;
+  color: black;
+}
+</style>
 </head>
 
 <body ng-app="demo">
@@ -146,7 +153,7 @@
 
 			<div class="col">
 				<select ng-model="houseDto.algorithm" class="input-sm spacing">
-<!-- 				   <option value="RANDOM_FOREST">RANDOM_FOREST</option> --> -->
+				   <option value="RANDOM_FOREST">RANDOM_FOREST</option> -->
 					<option value="RANDOM_TREE">RANDOM_TREE</option>
 					<option value="REP_TREE">REP_TREE</option>
 				    <option value="IBK">IBK</option> 
@@ -156,12 +163,12 @@
 		</div>
 		<div class="row">
 			<div class="col">
-				<label>Viti i ndertimit</label>
+				<label>Viti i PUBLIKIMIT</label>
 			</div>
 
 			<div class="col">
 				<input type="number" ng-model="houseDto.buildingYear"
-					class="input-sm spacing" value="2010" />
+					class="input-sm spacing" value="2020" />
 			</div>
 
 		</div>
@@ -212,6 +219,14 @@
 	</div>
  
 </body>
+<footer >
+  <p>Author: Amir Buzo</p>
+  <p><a href="mailto:amirbuzo@gmail.com">amirbuzo@gmail.com</a></p> 
+   <p>Main Feeder of Data: Njoftime.com<a href="https://www.njoftime.com/">Visit Njoftime.com!</a></p>
+  <p>Powered by: ikubINFO <a href="https://www.ikubinfo.al/">Visit ikubinfo.com!</a></p>
+
+  
+</footer>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.7.2/angular.min.js"></script>
 <script

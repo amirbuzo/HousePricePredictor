@@ -43,7 +43,7 @@ import weka.filters.supervised.attribute.NominalToBinary;
 public class PredictorMainClass {
 
 	public static final String TRAINING_DATA_SET_FILENAME_NUM = "C:\\Users\\abuzo\\house_data_1.arff";
-    public static final String TRAINING_DATA_SET_FILENAME_NOMINAL = "C:\\Users\\abuzo\\house_data_1nominal.arff";
+   // public static final String TRAINING_DATA_SET_FILENAME_NOMINAL = "C:\\Users\\abuzo\\house_data_1nominal.arff";
 	
 	public static void main(String[] args) throws Exception {
 

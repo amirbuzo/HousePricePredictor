@@ -10,7 +10,7 @@ module.controller("PredictController", ["$scope", "PredictService",
             ownerType: "ESTATE",
             hasLift:"YES",
             legalized: "ME_HIPOTEKE",
-            buildingYear: 2010,
+            buildingYear: 2020,
             city:"Fresku",
             modelType:"TWO_PLUS_ONE",
             algorithm:"RANDOM_TREE"
