@@ -37,14 +37,14 @@ public class FileProccessing {
 						// System.out.println(j++ + line);
 
 						// System.out.print(j);
-						System.out.print(i+",");
+						//System.out.print(i+",");
 
 						System.out.print(findSquare(line));
 						System.out.print(",no,");
 						System.out.print("yes,");
 						System.out.print("estate,");
 						System.out.print("me_hipoteke,");
-						System.out.print("2010");
+						System.out.print("2020");
 						System.out.print("," + findAddress(line));
 
 						System.out.print("," + findType(line));
@@ -86,9 +86,20 @@ public class FileProccessing {
 		Pattern p = Pattern.compile(rx);
 		Matcher matcher = p.matcher(m);
 		if (matcher.find()) {
-			return matcher.group().replace("m²", "").trim();
+			String ret= matcher.group().replace("m²", "").trim();
+			if(isNumeric(ret) && Integer.parseInt(ret) <200)
+			  return ret;
 		}
 		return null;
+	}
+	
+	private static Pattern pattern = Pattern.compile("-?\\d+(\\.\\d+)?");
+
+	public static boolean isNumeric(String strNum) {
+	    if (strNum == null) {
+	        return false; 
+	    }
+	    return pattern.matcher(strNum).matches();
 	}
 
 	public static String findType(String m) {
@@ -119,53 +130,15 @@ public class FileProccessing {
 	}
 
 	public static String findAddress(String m) {
-//		2 Rr.eElbasanit/ShkollaBaletit
-//		2AutostradaTr.-El.
-//		6Kombinat/Vaqarr/Ndroq
-//		3Fresku/Linze/Dajt
-//		8ConcordCenter/5Maji
-//		11AutostradaTr.-Dr.
-//		9DonBosko/JordanMisja
-//		8Rr.Bardhyl/SiriKodra/RizaCerova
-//		7MyslymShyri/DrejtoriaPolicise
-//		1Poligrafiku/Autotraktoret/Shkoze
-//		10Qender–Posta/LidhjaShkrimtareve
-//		4Kinostudio/Porcelan
-//		7BllokuAmbasadave/Inxh.Ndertimit
-//		6Astir/Unazaere/TeodorKeko
-//		11QTU/Kashar/CasaItalia
-//		2Piramida/ETC/TVSH/Stadiumi
-//		3Xhamlliku/Oxhaku/Profarma
-//		8Selvia/Rr.eDibres/Gj.Partizani
-//		1AliDemi/TreguElektrik
-//		9Qender
-//		5StadiumiDinamo/SheshiWillson
-//		4Spitali/Allias/Tufine
-//		5Liqenithate/KopshtiBotanik
-//		5VasilShanto/BllokuVilaveSelite
-//		5KomunaParisit/KristalCenter
-//		11Rinas
-//		2QytetiStudenti/Sauk
-//		8Medreseja/TreguIndustrial
-//		11Instituti/Kamez/Paskuqan
-//		7FushaAviacionit
-//		5Liqeni/Rr.Kosovareve/PetroNini
-//		3Ministriaejashtme/Brryli
-//		7Ekspozita/GjykataRrethit
-//		10Rr.Durresit/Prokuroria
-//		6PallatimeShigjeta/Delijorgji
-//		5Blloku
-//		7Parku/Globe/FabrikaBukes
-//		11Vore
-//		7Rr.eKavajes/21Dhjetori
-//		9Rr.Fortuzi/MinePeza
-//		6Yzberisht/MistoMame
-//		11Laprake/Spitaliushtarak/Dogana
-//		9StacioniTrenit/ZoguiZi
-//		2Pazariiri/9-katshet/Barrikada
-//		5Selite/KodraeDiellit
-//		2TEG/Lunder/Farke/Mjull-Bathore
-		
+ 
+//		10Qender–Posta_LidhjaShkrimtareve	
+//		2Piramida_ETC_TVSH_Stadiumi	
+//		2TEG_Lunder_Farke_MjullBathore
+//		6PallatimeShigjeta_Delijorgji			
+//		7Ekspozita_GjykataRrethit
+//		7Parku_Globe_FabrikaBukes
+//		8ConcordCenter_5Maji
+
 		
 		String rx = "(?<=\\().+?(?=\\))";
 		Pattern p = Pattern.compile(rx);
@@ -174,139 +147,155 @@ public class FileProccessing {
 			String text = matcher.group();
 			if (text.toLowerCase().contains("fres") || text.toLowerCase().contains("kuka")
 					|| text.toLowerCase().contains("sotir caci") || text.toLowerCase().contains("dajt")
+					|| text.toLowerCase().contains("thesar") || text.toLowerCase().contains("deliu")
+					|| text.toLowerCase().contains("telefer")
 					|| text.toLowerCase().contains("fresku")) {
-				return "Fresku";
+				return "3Fresku_Linze_Dajt";
 			} else if (text.toLowerCase().contains("brryl")) {
-				return "Brryli";
+				return "3Ministriaejashtme_Brryli";
 
-			} else if (text.toLowerCase().contains("ali") || text.toLowerCase().contains("dem")
-					|| text.toLowerCase().contains("petro nini") || text.toLowerCase().contains("elektr")
-					|| text.toLowerCase().contains("hysa")) {
-				return "AliDemi";
+			} else if (text.toLowerCase().contains("ali") || text.toLowerCase().contains("dem")  || 
+					  text.toLowerCase().contains("elektr")
+				 ) {
+				return "1AliDemi_TreguElektrik";
 
 			} else if (text.toLowerCase().contains("laprak") || text.toLowerCase().contains("dritan")) {
-				return "Laprake";
+				return "11Laprake_Spitaliushtarak_Dogana";
 
 			} else if (text.toLowerCase().contains("komun") || text.toLowerCase().contains("paris")
 					|| text.toLowerCase().contains("kristal") || text.toLowerCase().contains("shtylla")) {
-				return "KomuneParisit";
+				return "5KomunaParisit_KristalCenter";
 
 			}
+			else if((text.toLowerCase().contains("liqen")
+					&& text.toLowerCase().contains("thate") || text.toLowerCase().contains("botanik")))
+			{
+				return "5Liqenithate_KopshtiBotanik";
+			}
+		  else if (text.toLowerCase().contains("liqen") || text.toLowerCase().contains("kosovar")
+					|| text.toLowerCase().contains("petro") || text.toLowerCase().contains("nini")
+				     ) {
+				return "5Liqeni_Rr.Kosovareve_PetroNini";
 
-			else if (text.toLowerCase().contains("thesar") || text.toLowerCase().contains("deliu")
-					|| text.toLowerCase().contains("telefer")) {
-				return "Fresku";
-
-			} else if (text.toLowerCase().contains("liqen") || text.toLowerCase().contains("kosovar")
-					|| text.toLowerCase().contains("botanik") || text.toLowerCase().contains("zooogjik")
-					|| text.toLowerCase().contains("kopsht") || text.toLowerCase().contains("kopesht")
-					|| text.toLowerCase().contains("qesarak")) {
-				return "Liqeni";
-
-			} else if (text.toLowerCase().contains("misto") || text.toLowerCase().contains("amerikan 3")) {
-				return "MistoMame";
-
-			} else if (text.toLowerCase().contains("bosko") || text.toLowerCase().contains("misja")
+			}  else if (text.toLowerCase().contains("bosko") || text.toLowerCase().contains("misja")
 					|| text.toLowerCase().contains("bosco")) {
-				return "DonBosko";
+				return "9DonBosko_JordanMisja";
 
-			} else if (text.toLowerCase().contains("yzber") || text.toLowerCase().contains("ysber")) {
-				return "Yzberisht";
+			} else if (text.toLowerCase().contains("yzber") || text.toLowerCase().contains("ysber") || text.toLowerCase().contains("misto")) {
+				return "6Yzberisht_MistoMame";
 
 			} else if (text.toLowerCase().contains("bardhyl") || text.toLowerCase().contains("siri")
 					|| text.toLowerCase().contains("cerova")) {
-				return " RrBardhyl_SiriKodra_RizaCerova";
+				return " 8Rr.Bardhyl_SiriKodra_RizaCerova";
 
 			}
-
+			else if(text.toLowerCase().contains("aviacionit")
+					|| text.toLowerCase().contains("aviacjonit"))
+			{
+				return "7FushaAviacionit";
+			}
+			else if(text.toLowerCase().contains("barrikada")
+					|| text.toLowerCase().contains("katshet")
+					|| text.toLowerCase().contains("pazar i ri")
+					|| text.toLowerCase().contains("avni rustemi"))
+			{
+				return "2Pazariiri_9katshet_Barrikada";
+			}
+			
+			
 			else if (text.toLowerCase().contains("21") || text.toLowerCase().contains("kavaj")
-					|| text.toLowerCase().contains("sherak") || text.toLowerCase().contains("parku")
-					|| text.toLowerCase().contains("frosina") || text.toLowerCase().contains("aviacionit")
-					|| text.toLowerCase().contains("aviacjonit") || text.toLowerCase().contains("lenja")
-					|| text.toLowerCase().contains("shigjeta") || text.toLowerCase().contains("dhjetor")
-					|| text.toLowerCase().contains("ndre mjeda") || text.toLowerCase().contains("naim frasheri")
-					|| text.toLowerCase().contains("globe")) {
-				return "21Dhjetori";
+  				 || text.toLowerCase().contains("dhjetor")
+				  ) {
+				return "7Rr.eKavajes_21Dhjetori";
 
-			} else if (text.toLowerCase().contains("kombi")) {
-				return "Kombinat";
+			} else if (text.toLowerCase().contains("kombina")) {
+				return "6Kombinat_Vaqarr_Ndroq";
 
-			} else if (text.toLowerCase().contains("kamez") || text.toLowerCase().contains("kamz")) {
-				return "Kamez";
+			} else if (text.toLowerCase().contains("kamez") || text.toLowerCase().contains("kamz")|| text.toLowerCase().contains("paskuqan")) {
+				return "11Instituti_Kamez_Paskuqan";
 
 			} else if (text.toLowerCase().contains("selite") || text.toLowerCase().contains("diell")) {
-				return "Selite";
+				return "5Selite_KodraeDiellit";
 
-			} else if (text.toLowerCase().contains("qender") || text.toLowerCase().contains("9 kat")
-					|| text.toLowerCase().contains("bllok") || text.toLowerCase().contains("barrikad")
-					|| text.toLowerCase().contains("myslym") || text.toLowerCase().contains("rikadave")
-					|| text.toLowerCase().contains("tefta") || text.toLowerCase().contains("zhan")
-					|| text.toLowerCase().contains("toptan") || text.toLowerCase().contains("qemal")
-					|| text.toLowerCase().contains("bajram curri") || text.toLowerCase().contains("hoxha tahsim")
-					|| text.toLowerCase().contains("wilson") || text.toLowerCase().contains("willson")
-					|| text.toLowerCase().contains("sami frasheri") || text.toLowerCase().contains("pazar")
-					|| text.toLowerCase().contains("rustemi") || text.toLowerCase().contains("fishta")
-					|| text.toLowerCase().contains("abdyl frasheri") || text.toLowerCase().contains("dinamo")) {
-				return "Qender";
-
-			} else if (text.toLowerCase().contains("shanto") || text.toLowerCase().contains("tomin")
+			} 
+			else if( text.toLowerCase().contains("myslym") ||  text.toLowerCase().contains("shyri")  ||
+					 text.toLowerCase().contains("drejtoria e policise"))
+			{
+				return "7MyslymShyri_DrejtoriaPolicise";
+			}
+			else if( text.toLowerCase().contains("fortuzi") ||  text.toLowerCase().contains("mine")  ||
+					 text.toLowerCase().contains("peza"))
+			{
+				return "9Rr.Fortuzi_MinePeza";
+			}
+			else if( text.toLowerCase().contains("dinamo") ||  text.toLowerCase().contains("wilson")  ||
+					 text.toLowerCase().contains("willson"))
+			{
+				return "5StadiumiDinamo_SheshiWillson";
+			}
+			
+ 
+			else if (text.toLowerCase().contains("shanto") || text.toLowerCase().contains("tomin")
 					|| text.toLowerCase().contains("kesh") || text.toLowerCase().contains("sykja")
 					|| text.toLowerCase().contains("tirana e re")
 
 			) {
-				return "VasilShanto";
+				return "5VasilShanto_BllokuVilaveSelite";
 
 			} else if (text.toLowerCase().equals("Pasho Hysa") || text.toLowerCase().contains("shkoz")
 					|| text.toLowerCase().contains("pasho") || text.toLowerCase().contains("hysa")) {
-				return "Shkoze";
+				return "1Poligrafiku_Autotraktoret_Shkoze";
 
 			} else if (text.toLowerCase().contains("kinostudio") || text.toLowerCase().contains("porcelan")
 					|| text.toLowerCase().contains("klan")) {
-				return "Porcelani";
+				return "4Kinostudio_Porcelan";
 
 			} else if (text.toLowerCase().contains("astir") || text.toLowerCase().contains("teodor")
 					|| text.toLowerCase().contains("unaze") || text.toLowerCase().contains("unaza")) {
-				return "Astir";
+				return "6Astir_Unazaere_TeodorKeko";
 
 			} else if (text.toLowerCase().contains("xhamllik") || text.toLowerCase().contains("xhanfize")
 					|| text.toLowerCase().contains("manastir") || text.toLowerCase().contains("varr")
 					|| text.toLowerCase().contains("oxhak") || text.toLowerCase().contains("profarm")) {
-				return "Xhamlliku";
+				return "3Xhamlliku_Oxhaku_Profarma";
 
 			} else if (text.toLowerCase().contains("zog") || text.toLowerCase().contains("zi")
 					|| text.toLowerCase().contains("fultz") || text.toLowerCase().contains("hipotek")
-					|| text.toLowerCase().contains("tren")) {
-				return "ZoguZi";
+					|| text.toLowerCase().contains("trenit")) {
+				return "9StacioniTrenit_ZoguiZi";
 
 			} else if (text.toLowerCase().startsWith("elbasan") || text.toLowerCase().contains("balet")
 					|| text.toLowerCase().contains("lice") || text.toLowerCase().contains("elbas")) {
-				return "RrElbasanit";
+				return "2Rr.eElbasanit_ShkollaBaletit";
 
 			} else if (text.toLowerCase().contains("diber") || text.toLowerCase().contains("dibre")
 					|| text.toLowerCase().contains("partizan") || text.toLowerCase().contains("kuqe")
-					|| text.toLowerCase().contains("selvi") || text.toLowerCase().contains("qsut")) {
-				return "RrDibres";
+					|| text.toLowerCase().contains("selvi") ) {
+				return "8Selvia_Rr.eDibres_Gj.Partizani";
 
 			} else if (text.toLowerCase().contains("durres") || text.toLowerCase().contains("durrë")
 					|| text.toLowerCase().contains("peza") || text.toLowerCase().contains("bogdaneve")) {
-				return "RrDurresit";
+				return "10Rr.Durresit_Prokuroria";
 
 			}
-
+			else if(text.toLowerCase().contains("bllok"))
+			{
+				return "5Blloku";
+			}
 			else if (text.toLowerCase().contains("allias") || text.toLowerCase().contains("tufine")) {
-				return "Allias";
+				return "4Spitali_Allias_Tufine";
 
-			} else if (text.toLowerCase().contains("budi") || text.toLowerCase().contains("studenti")) {
-				return "QytetStudenti";
+			} else if (text.toLowerCase().contains("budi") || text.toLowerCase().contains("studenti") || text.toLowerCase().contains("sauk")) {
+				return "2QytetiStudenti_Sauk";
 
-			} else if (text.toLowerCase().contains("ndertim") || text.toLowerCase().contains("inxhi")) {
-				return "InxhinieriNdertimit";
+			} else if (text.toLowerCase().contains("ndertim") || text.toLowerCase().contains("inxhi") || text.toLowerCase().contains("ambasadave")) {
+				return "7BllokuAmbasadave_Inxh.Ndertimit";
 
-			} else if (text.toLowerCase().startsWith("medreseja") || text.toLowerCase().contains("edrese")
+			} else if (text.toLowerCase().startsWith("medreseja") || text.toLowerCase().contains("industrial")
 					|| text.toLowerCase().contains("maji") || text.toLowerCase().contains("medres")
 					|| text.toLowerCase().contains("ferit") || text.toLowerCase().contains("farmacia")
 					|| text.toLowerCase().contains("4 deshmoret")) {
-				return "Medreseja";
+				return "8Medreseja_TreguIndustrial";
 
 			} else {
 				return null;
