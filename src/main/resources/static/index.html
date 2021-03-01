@@ -30,8 +30,8 @@ footer {
 			</div>
 
 			<div class="col">
-				<input type="number" ng-model="houseDto.sizeMeters"
-					class="input-sm spacing" /><span>&#13217;</span>
+				<input type="number" ng-model="houseDto.sizeMeters" max="250" min="30"
+					class="input-sm spacing" /><span>&#13217;</span> Range [30-250]
 			</div>
 
 		</div>
@@ -112,38 +112,46 @@ footer {
 
 			<div class="col">
 				<select ng-model="houseDto.city" class="input-sm spacing">
-					<option value="21Dhjetori">21 Dhjetori</option>
-					<option value="Medreseja">Medreseja</option>
-					<option value="Liqeni">Liqeni</option>
-					<option value="Astir">Astir</option>
-					<option value="Selite">Selite, Kodra e diellit</option>
-					<option value="RrDibres">Rr Dibres</option>
-					<option value="DonBosko">Don Bosko</option>
-					<option value="Yzberisht">Yzberisht</option>
-					<option value="Qender">Qender</option>
-					<option value="Fresku">Fresku</option>
-					<option value="RrDurresit">Rr Durresit</option>
-					<option value="MistoMame">Misto Mame</option>
-					<option value="Brryli">Brryli</option>
-					<option value="ZoguZi">Zogu i Zi</option>
-					<option value="AliDemi">Ali Demi</option>
-					<option value="Kombinat">Kombinat</option>
-					<option value="RrElbasanit">Rr Elbasanit</option>
-					<option value="Xhamlliku">Xhamlliku</option>
-					<option value="Porcelani">Porcelani</option>
-					<option value="KomuneParisit">Komune e Parisit</option>
-					<option value="MistoMame">Misto Mame</option>
-					<option value="Laprake">Laprake</option>
-					<option value="Shkoze">Shkoze</option>
-					<option value="QytetStudenti">Qytet Studenti</option>
-					<option value="InxhinieriNdertimit">Inxhinieri e Ndertimit</option>
-					<option value="Allias">Allias</option>
-					<option value="RrBardhyl_SiriKodra_RizaCerova">RrBardhyl
-						SiriKodra RizaCerova</option>
-					<option value="Kamez">Kamez</option>
-					<option value="VasilShanto">Vasil Shanto</option>
-
-				</select>
+					<option value="1AliDemi_TreguElektrik">ALi Demi Tregu Elektrik</option>
+					<option value="1Poligrafiku_Autotraktoret_Shkoze">1Poligrafiku_Autotraktoret_Shkoze</option>
+					<option value="10Qender-Posta_LidhjaShkrimtareve">10QenderPosta_LidhjaShkrimtareve</option>
+					<option value="10Rr.Durresit_Prokuroria">10Rr.Durresit_Prokuroria</option>
+					<option value="11Instituti_Kamez_Paskuqan">11Instituti_Kamez_Paskuqan</option>
+					<option value="11Laprake_Spitaliushtarak_Dogana">11Laprake_Spitaliushtarak_Dogana</option>
+					<option value="2Pazariiri_9katshet_Barrikada">2Pazariiri_9katshet_Barrikada</option>
+					<option value="2Piramida_ETC_TVSH_Stadiumi">2Piramida_ETC_TVSH_Stadiumi</option>
+					<option value="2QytetiStudenti_Sauk">2QytetiStudenti_Sauk</option>
+					<option value="2Rr.eElbasanit_ShkollaBaletit">2Rr.eElbasanit_ShkollaBaletit</option>
+					<option value="2TEG_Lunder_Farke_MjullBathore">2TEG_Lunder_Farke_MjullBathore</option>
+					<option value="3Fresku_Linze_Dajt">3Fresku_Linze_Dajt</option>
+					<option value="3Ministriaejashtme_Brryli">3Ministriaejashtme_Brryli</option>
+					<option value="3Xhamlliku_Oxhaku_Profarma">3Xhamlliku_Oxhaku_Profarma</option>
+					<option value="4Kinostudio_Porcelan">4Kinostudio_Porcelan</option>
+					<option value="4Spitali_Allias_Tufine">4Spitali_Allias_Tufine</option>
+					<option value="5Blloku">5Blloku</option>
+					<option value="5KomunaParisit_KristalCenter">5KomunaParisit_KristalCenter</option>
+					<option value="5Liqeni_Rr.Kosovareve_PetroNini">5Liqeni_Rr.Kosovareve_PetroNini</option>
+					<option value="5Liqenithate_KopshtiBotanik">5Liqenithate_KopshtiBotanik</option>
+					<option value="5StadiumiDinamo_SheshiWillson">5StadiumiDinamo_SheshiWillson</option>
+					<option value="5VasilShanto_BllokuVilaveSelite">5VasilShanto_BllokuVilaveSelite</option>
+					<option value="6Astir_Unazaere_TeodorKeko">6Astir_Unazaere_TeodorKeko</option>
+					<option value="6Kombinat_Vaqarr_Ndroq">6Kombinat_Vaqarr_Ndroq</option>
+					<option value="6PallatimeShigjeta_Delijorgji">6PallatimeShigjeta_Delijorgji</option>
+					<option value="6Yzberisht_MistoMame">6Yzberisht_MistoMame</option>
+					<option value="7BllokuAmbasadave_Inxh.Ndertimit">7BllokuAmbasadave_Inxh.Ndertimit</option>
+					<option value="7Ekspozita_GjykataRrethit">7Ekspozita_GjykataRrethit</option>
+					<option value="7FushaAviacionit">7FushaAviacionit</option>
+					<option value="7MyslymShyri_DrejtoriaPolicise">7MyslymShyri_DrejtoriaPolicise</option>
+					<option value="7Parku_Globe_FabrikaBukes">7Parku_Globe_FabrikaBukes</option>
+					<option value="7Rr.eKavajes_21Dhjetori">7Rr.eKavajes_21Dhjetori</option>
+					<option value="8ConcordCenter_5Maji">8ConcordCenter_5Maji</option>
+					<option value="8Medreseja_TreguIndustrial">8Medreseja_TreguIndustrial</option>
+					<option value="8Rr.Bardhyl_SiriKodra_RizaCerova">8Rr.Bardhyl_SiriKodra_RizaCerova</option>
+					<option value="8Selvia_Rr.eDibres_Gj.Partizani">8Selvia_Rr.eDibres_Gj.Partizani</option>
+					<option value="9DonBosko_JordanMisja">9DonBosko_JordanMisja</option>
+					<option value="9Rr.Fortuzi_MinePeza">9Rr.Fortuzi_MinePeza</option>
+					<option value="9StacioniTrenit_ZoguiZi">9StacioniTrenit_ZoguiZi</option>
+ 				</select>
 			</div>
 		</div>
 		<div class="row">
@@ -153,7 +161,7 @@ footer {
 
 			<div class="col">
 				<select ng-model="houseDto.algorithm" class="input-sm spacing">
-				   <option value="RANDOM_FOREST">RANDOM_FOREST</option> -->
+				<!--   <option value="RANDOM_FOREST">RANDOM_FOREST</option> -->
 					<option value="RANDOM_TREE">RANDOM_TREE</option>
 					<option value="REP_TREE">REP_TREE</option>
 				    <option value="IBK">IBK</option> 

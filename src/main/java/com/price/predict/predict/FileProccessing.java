@@ -19,7 +19,7 @@ public class FileProccessing {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		String files = "C:\\Users\\abuzo\\git\\HousePricePredictor\\src\\main\\resources\\static\\data.txt";
+		String files = "C:\\Users\\abuzo\\git\\HousePricePredictor\\src\\main\\resources\\originalsource\\data.txt";
 		File file = new File(files);
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			String line;
@@ -37,6 +37,7 @@ public class FileProccessing {
 						// System.out.println(j++ + line);
 
 						// System.out.print(j);
+						System.out.print(i+",");
 
 						System.out.print(findSquare(line));
 						System.out.print(",no,");
@@ -118,6 +119,54 @@ public class FileProccessing {
 	}
 
 	public static String findAddress(String m) {
+//		2 Rr.eElbasanit/ShkollaBaletit
+//		2AutostradaTr.-El.
+//		6Kombinat/Vaqarr/Ndroq
+//		3Fresku/Linze/Dajt
+//		8ConcordCenter/5Maji
+//		11AutostradaTr.-Dr.
+//		9DonBosko/JordanMisja
+//		8Rr.Bardhyl/SiriKodra/RizaCerova
+//		7MyslymShyri/DrejtoriaPolicise
+//		1Poligrafiku/Autotraktoret/Shkoze
+//		10Qender–Posta/LidhjaShkrimtareve
+//		4Kinostudio/Porcelan
+//		7BllokuAmbasadave/Inxh.Ndertimit
+//		6Astir/Unazaere/TeodorKeko
+//		11QTU/Kashar/CasaItalia
+//		2Piramida/ETC/TVSH/Stadiumi
+//		3Xhamlliku/Oxhaku/Profarma
+//		8Selvia/Rr.eDibres/Gj.Partizani
+//		1AliDemi/TreguElektrik
+//		9Qender
+//		5StadiumiDinamo/SheshiWillson
+//		4Spitali/Allias/Tufine
+//		5Liqenithate/KopshtiBotanik
+//		5VasilShanto/BllokuVilaveSelite
+//		5KomunaParisit/KristalCenter
+//		11Rinas
+//		2QytetiStudenti/Sauk
+//		8Medreseja/TreguIndustrial
+//		11Instituti/Kamez/Paskuqan
+//		7FushaAviacionit
+//		5Liqeni/Rr.Kosovareve/PetroNini
+//		3Ministriaejashtme/Brryli
+//		7Ekspozita/GjykataRrethit
+//		10Rr.Durresit/Prokuroria
+//		6PallatimeShigjeta/Delijorgji
+//		5Blloku
+//		7Parku/Globe/FabrikaBukes
+//		11Vore
+//		7Rr.eKavajes/21Dhjetori
+//		9Rr.Fortuzi/MinePeza
+//		6Yzberisht/MistoMame
+//		11Laprake/Spitaliushtarak/Dogana
+//		9StacioniTrenit/ZoguiZi
+//		2Pazariiri/9-katshet/Barrikada
+//		5Selite/KodraeDiellit
+//		2TEG/Lunder/Farke/Mjull-Bathore
+		
+		
 		String rx = "(?<=\\().+?(?=\\))";
 		Pattern p = Pattern.compile(rx);
 		Matcher matcher = p.matcher(m);
