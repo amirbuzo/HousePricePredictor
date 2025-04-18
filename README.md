@@ -4,6 +4,7 @@ ____
 # HousePricePredictor
 
 HousePricePredictor helps to predict the price of the house based on the "RandomForest" Algorithm. As learning model a sample learning model is provided based on which the house price is predicted with the different attributes.
+The data are gathered for city of Tirana/Albania
 
 ## Getting Started
 
